@@ -1,30 +1,19 @@
-import { fetchProducts, ProductsResponse } from "@/lib/shopify";
-import Image from "next/image";
+import { ModeToggle } from "@/components/ModeToggle";
+import AllProducts from "@/components/products/AllProducts";
 import React from "react";
 
-const ProductsPage = async () => {
-  const data: ProductsResponse = await fetchProducts();
-
+const ProductsPage = () => {
   return (
     <div>
-      <h1>Products</h1>
-      <div>
-        {data.products.edges.map(({ node: product }) => (
-          <div key={product.id}>
-            <h2>{product.title}</h2>
-            <div
-              style={{ width: "300px", height: "300px", position: "relative" }}
-            >
-              <Image
-                src={product.images.edges[0].node.src}
-                alt={product.title}
-                layout="fill"
-              />
-            </div>
-            <p>Price: ${product.priceRange.minVariantPrice.amount}</p>
-          </div>
-        ))}
+      <div className="flex p-16">
+        <div className="flex-1 flex justify-end">
+          <h1 className="text-primary text-4xl font-semibold">Products</h1>
+        </div>
+        <div className="flex-1 flex justify-end">
+          <ModeToggle />
+        </div>
       </div>
+      <AllProducts />
     </div>
   );
 };
