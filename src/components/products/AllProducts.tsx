@@ -1,4 +1,4 @@
-import { fetchProducts, ProductsResponse } from "@/lib/shopify";
+import { fetchProducts, ProductsResponse } from "@/lib/shopify/shopify";
 import Image from "next/image";
 import React from "react";
 import BuyForAllProducts from "./BuyForAllProducts";
