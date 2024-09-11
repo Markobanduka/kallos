@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { createCheckout } from "@/lib/shopify/checkout";
 import { fetchProductById, ProductResponse } from "@/lib/shopify/shopify";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -32,6 +33,18 @@ const SingleProduct = () => {
     }
   }, [id]);
 
+  const handleBuy = async () => {
+    if (product) {
+      try {
+        const variantId = product.product.variants.edges[0].node.id;
+        const checkoutUrl = await createCheckout(variantId);
+        window.location.href = checkoutUrl;
+      } catch (error) {
+        console.error("Error creating checkout", error);
+      }
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -53,7 +66,11 @@ const SingleProduct = () => {
         </div>
         <div className="p-4">
           <h1 className="text-4xl">{product.product.title}</h1>
-          <Button variant="outline" className="bg-primary mt-6">
+          <Button
+            variant="outline"
+            className="bg-primary mt-6"
+            onClick={handleBuy}
+          >
             Buy
           </Button>
           <div className="flex mt-10">

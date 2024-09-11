@@ -72,6 +72,10 @@ export const fetchProducts = async (): Promise<ProductsResponse> => {
   return result.data;
 };
 
+interface ProductVariant {
+  id: string;
+}
+
 interface Product {
   id: string;
   title: string;
@@ -84,6 +88,9 @@ interface Product {
     minVariantPrice: {
       amount: string;
     };
+  };
+  variants: {
+    edges: Array<{ node: ProductVariant }>;
   };
 }
 
@@ -118,6 +125,13 @@ export const fetchProductById = async (
         priceRange {
           minVariantPrice {
             amount
+          }
+        }
+        variants(first: 1) { 
+          edges {
+            node {
+              id  
+            }
           }
         }
       }
