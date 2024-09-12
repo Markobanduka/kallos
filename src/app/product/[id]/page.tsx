@@ -70,8 +70,13 @@ const SingleProduct = () => {
             variant="outline"
             className="bg-primary mt-6"
             onClick={handleBuy}
+            disabled={
+              product.product.priceRange.minVariantPrice.amount === "0.0"
+            }
           >
-            Buy
+            {product.product.priceRange.minVariantPrice.amount === "0.0"
+              ? "Out of stock"
+              : "Buy"}
           </Button>
           <div className="flex mt-10">
             <div className="text-3xl">Price:&nbsp;</div>
