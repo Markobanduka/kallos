@@ -25,7 +25,10 @@ const AllProducts = async () => {
             </div>
             <h2>{product.title}</h2>
             <p>Price: AED {product.priceRange.minVariantPrice.amount}</p>
-            <BuyForAllProducts id={productId || ""} />
+            <BuyForAllProducts
+              id={productId || ""}
+              price={product.priceRange.minVariantPrice.amount}
+            />
           </div>
         );
       })}
