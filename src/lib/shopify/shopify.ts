@@ -32,7 +32,7 @@ export const fetchProducts = async (): Promise<ProductsResponse> => {
 
   const query = `
     {
-      products(first: 12) {
+      products(first: 112) {
         edges {
           node {
             id
