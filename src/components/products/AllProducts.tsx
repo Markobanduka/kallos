@@ -14,7 +14,7 @@ const AllProducts = async () => {
         const productId = product.id.split("/").pop();
 
         return (
-          <div key={product.id} className="border">
+          <div key={product.id} className="border p-10" title={product.title}>
             <div className="flex justify-center">
               <Image
                 src={product.images.edges[0].node.src}
@@ -24,7 +24,12 @@ const AllProducts = async () => {
                 className="object-fit w-[260px] h-[200px]"
               />
             </div>
-            <h2>{product.title}</h2>
+
+            <h2>
+              {product.title.length > 25
+                ? `${product.title.slice(0, 23)}...`
+                : product.title}
+            </h2>
             <p>Price: AED {product.priceRange.minVariantPrice.amount}</p>
             <BuyForAllProducts
               id={productId || ""}

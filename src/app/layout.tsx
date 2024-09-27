@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import LandingPage from "@/components/LandingPage";
 // import Footer from "@/components/Footer";
 
 const geistSans = localFont({
@@ -38,6 +39,7 @@ export default function RootLayout({
         >
           <div className="pb-10">
             <div className="flex flex-col ">
+              <LandingPage />
               {children}
               {/* <Footer /> */}
             </div>

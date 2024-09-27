@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { createCheckout } from "@/lib/shopify/checkout";
 import { fetchProductById, ProductResponse } from "@/lib/shopify/shopify";
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+
 import { useEffect, useState } from "react";
 
 const SingleProduct = () => {
+  const router = useRouter();
   const params = useParams();
   const id = (params.id = Array.isArray(params.id)
     ? params.id[0]
@@ -55,7 +57,7 @@ const SingleProduct = () => {
 
   return (
     <div>
-      <div className="flex justify-center items-center p-6">
+      <div className="flex justify-center items-center p-6 relative">
         <div>
           <Image
             width={300}
@@ -83,6 +85,9 @@ const SingleProduct = () => {
             <div className="text-3xl">
               {product.product.priceRange.minVariantPrice.amount} AED
             </div>
+          </div>
+          <div className="absolute left-0 top-0 p-16">
+            <Button onClick={() => router.push("/")}>Back</Button>
           </div>
         </div>
       </div>
