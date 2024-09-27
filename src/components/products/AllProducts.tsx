@@ -19,8 +19,9 @@ const AllProducts = async () => {
               <Image
                 src={product.images.edges[0].node.src}
                 alt={product.title}
-                width={200}
+                width={260}
                 height={200}
+                className="object-fit w-[260px] h-[200px]"
               />
             </div>
             <h2>{product.title}</h2>
