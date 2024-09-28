@@ -21,7 +21,7 @@ const LandingPage = () => {
         <h1 className="text-4xl font-bold tracking-wide">Kallos</h1>
         <p className="italic text-xl">We provide quality product for workout</p>
       </div>
-      <div className="absolute bottom-0 w-full px-10 py-20">
+      <div className="absolute bottom-0 w-full px-10 py-32">
         <div className="flex justify-between">
           <Button asChild className="text-left z-10">
             <Link href="#products-section" className="scroll-smooth">
