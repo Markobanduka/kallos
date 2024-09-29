@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { createCheckout } from "@/lib/shopify/checkout";
 import { fetchProductById, ProductResponse } from "@/lib/shopify/shopify";
 import Image from "next/image";
@@ -16,7 +17,7 @@ const SingleProduct = () => {
     : params.id || "");
 
   const [product, setProduct] = useState<ProductResponse | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchSingleProduct = async () => {
@@ -48,7 +49,15 @@ const SingleProduct = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex h-screen justify-center items-center flex-col space-y-3">
+        <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-[250px]" />
+          <Skeleton className="h-4 w-[200px]" />
+        </div>
+      </div>
+    );
   }
 
   if (!product) {
@@ -56,7 +65,10 @@ const SingleProduct = () => {
   }
 
   return (
-    <div>
+    <div className="p-10">
+      <div className="">
+        <Button onClick={() => router.push("/")}>Back</Button>
+      </div>
       <div className="flex justify-center items-center p-6 relative">
         <div>
           <Image
@@ -85,9 +97,6 @@ const SingleProduct = () => {
             <div className="text-3xl">
               {product.product.priceRange.minVariantPrice.amount} AED
             </div>
-          </div>
-          <div className="absolute left-0 top-0 p-16">
-            <Button onClick={() => router.push("/")}>Back</Button>
           </div>
         </div>
       </div>
