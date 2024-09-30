@@ -69,20 +69,21 @@ const SingleProduct = () => {
       <div className="">
         <Button onClick={() => router.push("/")}>Back</Button>
       </div>
-      <div className="flex justify-center items-center p-6 relative">
-        <div>
+      <div className="flex justify-center items-center relative border border-white">
+        <div className="flex relative">
+          <h1 className="text-4xl absolute top-0 w-full">
+            {product.product.title}
+          </h1>
           <Image
             width={300}
             height={100}
             src={product.product.images.edges[0]?.node.src}
             alt={product.product.title}
           />
-        </div>
-        <div className="p-4">
-          <h1 className="text-4xl">{product.product.title}</h1>
+
           <Button
             variant="outline"
-            className="bg-primary mt-6"
+            className="bg-primary absolute w-full bottom-0"
             onClick={handleBuy}
             disabled={
               product.product.priceRange.minVariantPrice.amount === "0.0"
@@ -92,9 +93,17 @@ const SingleProduct = () => {
               ? "Out of stock"
               : "Buy"}
           </Button>
+        </div>
+        <div className="">
+          <Image
+            width={50}
+            height={50}
+            src={product.product.images.edges[1]?.node.src}
+            alt={product.product.title}
+          />
           <div className="flex mt-10">
-            <div className="text-3xl">Price:&nbsp;</div>
-            <div className="text-3xl">
+            <div className="text-2xl">Price:&nbsp;</div>
+            <div className="text-2xl">
               {product.product.priceRange.minVariantPrice.amount} AED
             </div>
           </div>
