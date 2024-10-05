@@ -9,43 +9,61 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { fetchProducts, ProductsResponse } from "@/lib/shopify/shopify";
 import Image from "next/image";
+import { fetchProductById, ProductResponse } from "@/lib/shopify/shopify";
 
-const ImageSlider = () => {
-  const [products, setProducts] = React.useState<ProductsResponse | null>(null);
+interface ImageSliderProps {
+  id: string;
+}
+
+const ImageSlider: React.FC<ImageSliderProps> = ({ id }) => {
+  const [product, setProduct] = React.useState<ProductResponse | null>(null);
+  const [loading, setLoading] = React.useState<boolean>(true);
 
   React.useEffect(() => {
-    const fetchAllProducts = async () => {
+    const fetchSingleProduct = async () => {
+      setLoading(true);
       try {
-        const data = await fetchProducts();
-        setProducts(data);
+        const data = await fetchProductById(id);
+
+        console.log("Fetched Product Data:", data);
+        setProduct(data);
+        setLoading(false);
       } catch (error) {
-        console.error("Failed to fetch products", error);
+        console.error("Failed to fetch product", error);
+        setLoading(false);
       }
     };
-    fetchAllProducts();
-  }, []);
 
-  if (!products) {
+    if (id) {
+      fetchSingleProduct();
+    }
+  }, [id]);
+
+  if (loading) {
     return <div>Loading...</div>;
   }
+
+  if (!product) {
+    return <div>No product found</div>;
+  }
+
+  const productImages = product.product.images.edges.slice(0, 5);
 
   return (
     <Carousel className="w-full max-w-xs">
       <CarouselContent>
-        {products.products.edges.map(({ node: product }, index) => (
+        {productImages.map((imageEdge, index) => (
           <CarouselItem key={index}>
             <div className="p-1">
               <Card>
                 <CardContent className="flex aspect-square items-center justify-center p-6">
                   <Image
-                    src={product.images.edges[0].node.src}
-                    alt={product.title}
                     width={260}
-                    height={240}
-                    className="object-fit w-full h-full"
-                    priority={index === 0}
+                    height={260}
+                    src={imageEdge.node.src}
+                    alt={product.product.title || "Product image"}
+                    className="object-cover"
                   />
                 </CardContent>
               </Card>

@@ -18,7 +18,7 @@ const AllProducts = async () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 text-center">
       {data.products.edges.map(({ node: product }) => {
-        const productId = product.id.split("/").pop();
+        const productId = product.id.split("/").pop() || "";
 
         return (
           <div key={product.id} className="border p-10" title={product.title}>
@@ -39,7 +39,8 @@ const AllProducts = async () => {
                     <DialogTitle>{product.title}</DialogTitle>
                     <DialogDescription></DialogDescription>
                   </DialogHeader>
-                  <ImageSlider />
+
+                  <ImageSlider id={productId} />
                 </DialogContent>
               </Dialog>
             </div>
