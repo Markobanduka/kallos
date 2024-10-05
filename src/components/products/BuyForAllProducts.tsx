@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useEffect } from "react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 
@@ -10,8 +10,16 @@ const BuyForAllProducts: React.FC<{ id: string; price: string }> = ({
   const router = useRouter();
 
   const handleBuyClick = (id: string) => {
+    sessionStorage.setItem("scrollPosition", window.scrollY.toString());
+
     router.push(`/product/${id}`);
   };
+  useEffect(() => {
+    const savedScrollPosition = sessionStorage.getItem("scrollPosition");
+    if (savedScrollPosition) {
+      window.scrollTo(0, parseInt(savedScrollPosition));
+    }
+  }, []);
 
   return (
     <Button

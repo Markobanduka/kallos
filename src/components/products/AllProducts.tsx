@@ -6,8 +6,6 @@ import BuyForAllProducts from "./BuyForAllProducts";
 const AllProducts = async () => {
   const data: ProductsResponse = await fetchProducts();
 
-  console.log(data.products.edges[0].node.id);
-
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 text-center">
       {data.products.edges.map(({ node: product }) => {
