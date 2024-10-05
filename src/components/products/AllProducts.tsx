@@ -2,6 +2,15 @@ import { fetchProducts, ProductsResponse } from "@/lib/shopify/shopify";
 import Image from "next/image";
 import React from "react";
 import BuyForAllProducts from "./BuyForAllProducts";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import ImageSlider from "../ImageSlider";
 
 const AllProducts = async () => {
   const data: ProductsResponse = await fetchProducts();
@@ -14,13 +23,25 @@ const AllProducts = async () => {
         return (
           <div key={product.id} className="border p-10" title={product.title}>
             <div className="flex justify-center">
-              <Image
-                src={product.images.edges[0].node.src}
-                alt={product.title}
-                width={260}
-                height={200}
-                className="object-fit w-[260px] h-[200px]"
-              />
+              <Dialog>
+                <DialogTrigger>
+                  <Image
+                    src={product.images.edges[0].node.src}
+                    alt={product.title}
+                    width={260}
+                    height={200}
+                    className="object-fit w-[260px] h-[240px]"
+                    priority={true}
+                  />
+                </DialogTrigger>
+                <DialogContent aria-describedby={undefined}>
+                  <DialogHeader>
+                    <DialogTitle>{product.title}</DialogTitle>
+                    <DialogDescription></DialogDescription>
+                  </DialogHeader>
+                  <ImageSlider />
+                </DialogContent>
+              </Dialog>
             </div>
 
             <h2>
