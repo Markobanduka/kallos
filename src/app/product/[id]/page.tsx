@@ -70,10 +70,8 @@ const SingleProduct = () => {
         <Button onClick={() => router.push("/")}>Back</Button>
       </div>
       <div className="flex justify-center items-center relative border border-white">
-        <div className="flex relative">
-          <h1 className="text-4xl absolute top-0 w-full">
-            {product.product.title}
-          </h1>
+        <div className="flex">
+          <h1 className="text-4xl  w-full">{product.product.title}</h1>
           <Image
             width={300}
             height={100}
