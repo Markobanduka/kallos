@@ -65,18 +65,20 @@ const SingleProduct = () => {
   }
 
   return (
-    <div className="p-10">
-      <div className="">
-        <Button onClick={() => router.push("/")}>Back</Button>
-      </div>
-      <div className="flex justify-center items-center relative border border-white">
+    <div className="h-screen justify-center flex items-center w-full">
+      <div className="flex border border-white h-96">
         <div className="flex">
-          <h1 className="text-4xl  w-full">{product.product.title}</h1>
+          <Button onClick={() => router.push("/")} className="flex">
+            Back
+          </Button>
+
+          <h1 className="text-4xl flex w-full">{product.product.title}</h1>
           <Image
-            width={300}
-            height={100}
+            width={100}
+            height={50}
             src={product.product.images.edges[0]?.node.src}
             alt={product.product.title}
+            className="flex"
           />
 
           <Button
@@ -91,18 +93,18 @@ const SingleProduct = () => {
               ? "Out of stock"
               : "Buy"}
           </Button>
-        </div>
-        <div className="">
-          <Image
+
+          <div className="">
+            {/* <Image
             width={50}
             height={50}
             src={product.product.images.edges[1]?.node.src}
             alt={product.product.title}
-          />
-          <div className="flex mt-10">
-            <div className="text-2xl">Price:&nbsp;</div>
-            <div className="text-2xl">
-              {product.product.priceRange.minVariantPrice.amount} AED
+            /> */}
+            <div className="flex mt-10">
+              <div className="text-2xl">
+                {product.product.priceRange.minVariantPrice.amount} AED
+              </div>
             </div>
           </div>
         </div>
