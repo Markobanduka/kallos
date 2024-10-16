@@ -48,9 +48,7 @@ const Page = () => {
           wide range of products includes everything from durable resistance
           bands, sleek gym wear, to top-tier strength training equipment. Our
           mission is to empower individuals to reach their peak performance with
-          gear that enhances their training experience. Shop with confidence,
-          knowing that at Kallos Gym Essentials, quality and customer
-          satisfaction are our top priorities.
+          gear that enhances their training experience.
         </p>
       </div>
     </div>
