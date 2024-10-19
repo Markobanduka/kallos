@@ -93,7 +93,7 @@ const SingleProduct = () => {
         <p className="text-lg text-gray-700">{product.product.description}</p>
 
         <Button
-          variant="outline"
+          // variant="outline"
           className="bg-primary w-full lg:w-auto py-3 px-6"
           onClick={handleBuy}
           disabled={product.product.priceRange.minVariantPrice.amount === "0.0"}

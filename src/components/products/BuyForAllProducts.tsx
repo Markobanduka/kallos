@@ -23,7 +23,7 @@ const BuyForAllProducts: React.FC<{ id: string; price: string }> = ({
 
   return (
     <Button
-      variant="outline"
+      // variant="outline"
       className="bg-primary"
       onClick={() => handleBuyClick(id)}
       disabled={price === "0.0"}
