@@ -50,7 +50,7 @@ const AllProducts = async () => {
                 ? `${product.title.slice(0, 23)}...`
                 : product.title}
             </h2>
-            <p>Price: AED {product.priceRange.minVariantPrice.amount}</p>
+            <p> AED {product.priceRange.minVariantPrice.amount}</p>
             <BuyForAllProducts
               id={productId || ""}
               price={product.priceRange.minVariantPrice.amount}

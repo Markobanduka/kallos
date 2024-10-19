@@ -65,52 +65,44 @@ const SingleProduct = () => {
   }
 
   return (
-    <div className="h-screen justify-center flex items-center w-full">
-      <div className="flex border border-white h-96">
-        <div className="flex">
-          <Button onClick={() => router.push("/")} className="flex">
-            Back
-          </Button>
-
-          <h1 className="text-4xl flex w-full">{product.product.title}</h1>
-          <Image
-            width={100}
-            height={50}
-            src={product.product.images.edges[0]?.node.src}
-            alt={product.product.title}
-            className="flex"
-          />
-
-          <Button
-            variant="outline"
-            className="bg-primary absolute w-full bottom-0"
-            onClick={handleBuy}
-            disabled={
-              product.product.priceRange.minVariantPrice.amount === "0.0"
-            }
-          >
-            {product.product.priceRange.minVariantPrice.amount === "0.0"
-              ? "Out of stock"
-              : "Buy"}
-          </Button>
-
-          <div className="">
-            {/* <Image
-            width={50}
-            height={50}
-            src={product.product.images.edges[1]?.node.src}
-            alt={product.product.title}
-            /> */}
-            <div className="flex mt-10">
-              <div className="text-2xl">
-                {product.product.priceRange.minVariantPrice.amount} AED
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="flex flex-col lg:flex-row justify-center items-center w-full p-6 lg:p-12 space-y-8 lg:space-y-0 lg:space-x-12">
+      {/* Product Image */}
+      <div className="flex flex-col items-center lg:items-start w-full lg:w-1/2">
+        <Image
+          width={500}
+          height={500}
+          src={product.product.images.edges[0]?.node.src}
+          alt={product.product.title}
+          className="rounded-lg shadow-lg"
+        />
       </div>
 
-      <p>{product.product.description}</p>
+      {/* Product Details */}
+      <div className="flex flex-col items-start space-y-6 lg:w-1/2">
+        <Button onClick={() => router.push("/")} className="mb-4">
+          Back
+        </Button>
+
+        <h1 className="text-3xl lg:text-4xl font-bold">
+          {product.product.title}
+        </h1>
+        <div className="text-xl font-semibold">
+          {product.product.priceRange.minVariantPrice.amount} AED
+        </div>
+
+        <p className="text-lg text-gray-700">{product.product.description}</p>
+
+        <Button
+          variant="outline"
+          className="bg-primary w-full lg:w-auto py-3 px-6"
+          onClick={handleBuy}
+          disabled={product.product.priceRange.minVariantPrice.amount === "0.0"}
+        >
+          {product.product.priceRange.minVariantPrice.amount === "0.0"
+            ? "Out of stock"
+            : "Buy"}
+        </Button>
+      </div>
     </div>
   );
 };
