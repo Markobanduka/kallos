@@ -34,7 +34,7 @@ const AllProducts = async () => {
                     alt={product.title}
                     width={260}
                     height={240}
-                    className="object-cover w-[260px] h-[240px] rounded-md cursor-pointer"
+                    className="object-contain w-[260px] h-[240px] rounded-md cursor-pointer"
                     priority={true}
                   />
                 </DialogTrigger>
