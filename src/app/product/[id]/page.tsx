@@ -1,10 +1,10 @@
 "use client";
 
+import ImageSlider from "@/components/ImageSlider";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { createCheckout } from "@/lib/shopify/checkout";
 import { fetchProductById, ProductResponse } from "@/lib/shopify/shopify";
-import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
@@ -68,13 +68,7 @@ const SingleProduct = () => {
     <div className="flex flex-col lg:flex-row justify-center items-center w-full p-6 lg:p-12 space-y-8 lg:space-y-0 lg:space-x-12">
       {/* Product Image */}
       <div className="flex flex-col items-center lg:items-start w-full lg:w-1/2">
-        <Image
-          width={500}
-          height={500}
-          src={product.product.images.edges[0]?.node.src}
-          alt={product.product.title}
-          className="rounded-lg shadow-lg"
-        />
+        <ImageSlider id={id} />
       </div>
 
       {/* Product Details */}
