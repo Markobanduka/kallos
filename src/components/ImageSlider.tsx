@@ -51,18 +51,19 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ id }) => {
   const productImages = product.product.images.edges.slice(0, 5);
 
   return (
-    <Carousel className="w-full max-w-xs">
+    <Carousel className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
+      {" "}
       <CarouselContent>
         {productImages.map((imageEdge, index) => (
           <CarouselItem key={index}>
-            <div className="p-1">
+            <div className="p-1 sm:p-2 md:p-3 lg:p-4">
               <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
+                <CardContent className="flex aspect-square items-center justify-center p-4 sm:p-5 md:p-6 lg:p-8">
                   <Image
-                    width={260}
-                    height={260}
+                    width={200}
+                    height={200}
                     src={imageEdge.node.src}
-                    alt={product.product.title || "Product image"}
+                    alt={"Product image"}
                     className="object-cover"
                   />
                 </CardContent>

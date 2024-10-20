@@ -34,17 +34,22 @@ const AllProducts = async () => {
                     alt={product.title}
                     width={260}
                     height={240}
-                    className="object-fit w-[260px] h-[240px] rounded-md cursor-pointer"
+                    className="object-cover w-[260px] h-[240px] rounded-md cursor-pointer"
                     priority={true}
                   />
                 </DialogTrigger>
-                <DialogContent aria-describedby={undefined}>
+                <DialogContent
+                  aria-describedby={undefined}
+                  className="max-w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl"
+                >
                   <DialogHeader>
                     <DialogTitle>{product.title}</DialogTitle>
                     <DialogDescription></DialogDescription>
                   </DialogHeader>
 
-                  <ImageSlider id={productId} />
+                  <div className="flex justify-center">
+                    <ImageSlider id={productId} />
+                  </div>
                 </DialogContent>
               </Dialog>
             </div>
