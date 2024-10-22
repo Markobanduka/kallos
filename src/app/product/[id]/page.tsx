@@ -3,6 +3,14 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 import { createCheckout } from "@/lib/shopify/checkout";
 import ImageSlider from "@/components/ImageSlider";
@@ -68,18 +76,31 @@ const SingleProduct = () => {
 
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center w-full p-6 lg:p-12 space-y-8 lg:space-y-0 lg:space-x-12">
-      {/* Product Image */}
       <div className="flex flex-col items-center lg:items-start w-full lg:w-1/2">
         <ImageSlider id={id} />
       </div>
 
-      {/* Product Details */}
       <div className="flex flex-col items-start space-y-6 lg:w-1/2">
         <div className="flex justify-between items-center w-full">
           <Button onClick={() => router.push("/")} className="">
             Back
           </Button>
-          <Button>Cart</Button>
+          <Sheet>
+            <SheetTrigger className="bg-primary px-3 py-1 rounded-md">
+              Cart
+            </SheetTrigger>
+            <SheetContent>
+              <SheetHeader>
+                <SheetTitle>Cart</SheetTitle>
+                <div className="flex justify-around items-center">
+                  <SheetDescription className="inline">
+                    <span>1</span> x <span>Barbell Pads</span>
+                  </SheetDescription>
+                  <span>= 790 AED</span>
+                </div>
+              </SheetHeader>
+            </SheetContent>
+          </Sheet>
         </div>
 
         <h1 className="text-3xl lg:text-4xl font-bold">
