@@ -35,7 +35,7 @@ const Page = () => {
         ></iframe>
       </div>
       <div className="flex flex-col justify-center items-center">
-        <h1 className="text-3xl flex mb-6">About Us</h1>
+        <h1 className="text-3xl flex mb-6 underline">About Us</h1>
         <p>
           Welcome to Kallos Gym Essentials, your ultimate destination for
           high-quality fitness products designed to help you achieve your
