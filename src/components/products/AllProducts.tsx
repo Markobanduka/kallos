@@ -34,7 +34,7 @@ const AllProducts = async () => {
                     alt={product.title}
                     width={260}
                     height={240}
-                    className="object-contain w-[260px] h-[240px] rounded-md cursor-pointer"
+                    className="object-contain w-[260px] h-[240px] rounded-md cursor-pointer hover:scale-125 transition-transform duration-300"
                     priority={true}
                   />
                 </DialogTrigger>
