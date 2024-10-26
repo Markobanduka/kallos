@@ -17,6 +17,8 @@ const LandingPage = () => {
         alt="Kallos The Ancient Greek Ideal For Beauty"
         className="object-cover opacity-75"
       />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t dark:from-[hsl(20,14.3%,4.1%)] from-[hsl(0,0%,100%)] to-transparent pointer-events-none" />
+
       <div className="absolute inset-0 flex flex-col justify-center items-center z-10">
         <h1 className="text-4xl font-bold tracking-wide">Kallos</h1>
         <p className="italic text-xl">We provide quality product for workout</p>
