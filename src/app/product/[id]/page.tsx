@@ -1,16 +1,16 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+// import {
+//   Sheet,
+//   SheetContent,
+//   SheetDescription,
+//   SheetHeader,
+//   SheetTitle,
+//   SheetTrigger,
+// } from "@/components/ui/sheet";
 
 import { createCheckout } from "@/lib/shopify/checkout";
 import ImageSlider from "@/components/ImageSlider";
@@ -85,7 +85,7 @@ const SingleProduct = () => {
           <Button onClick={() => router.push("/")} className="">
             Back
           </Button>
-          <Sheet>
+          {/* <Sheet>
             <SheetTrigger className="bg-primary px-3 py-1 rounded-md">
               Cart
             </SheetTrigger>
@@ -100,7 +100,7 @@ const SingleProduct = () => {
                 </div>
               </SheetHeader>
             </SheetContent>
-          </Sheet>
+          </Sheet> */}
         </div>
 
         <h1 className="text-3xl lg:text-4xl font-bold">
@@ -124,12 +124,12 @@ const SingleProduct = () => {
               : "Buy"}
           </Button>
 
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
             <Button>-</Button>
             <Button>Add to cart</Button>
             <Input type="number" className="w-1/6" />
             <Button>+</Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
